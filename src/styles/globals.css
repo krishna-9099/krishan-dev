@@ -1,0 +1,671 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================================
+   CSS Custom Properties for Theme
+   ============================================================================ */
+
+/* Animated border angle property */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+:root {
+  /* Background */
+  --bg-primary: #0d0d0d;
+  --bg-secondary: #111111;
+  --bg-tertiary: #1a1a1a;
+
+  /* Accent */
+  --accent: #22c55e;
+  --accent-muted: rgba(34, 197, 94, 0.1);
+  --accent-glow: rgba(34, 197, 94, 0.15);
+
+  /* Text */
+  --text-heading: #f5f5f5;
+  --text-body: #a3a3a3;
+  --text-muted: #737373;
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-accent: rgba(34, 197, 94, 0.3);
+
+  /* Font families */
+  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, monospace;
+}
+
+/* Light theme variables */
+.light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --accent: #16a34a;
+  --accent-muted: rgba(22, 163, 74, 0.1);
+  --accent-glow: rgba(22, 163, 74, 0.15);
+  --text-heading: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  --border-accent: rgba(22, 163, 74, 0.3);
+}
+
+/* ============================================================================
+   Base Styles
+   ============================================================================ */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-body);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar - minimal */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+/* ============================================================================
+   Component Styles
+   ============================================================================ */
+
+@layer components {
+  /* Primary Button - Gradient with subtle glow */
+  .btn-primary {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-200 relative overflow-hidden;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--border-accent) 150%);
+    color: var(--bg-primary);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+
+  .btn-primary:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px var(--border-accent);
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .btn-primary:hover::before {
+    opacity: 1;
+  }
+
+  .btn-primary:focus-visible {
+    @apply outline-none ring-2 ring-offset-2;
+    ring-color: var(--accent);
+    ring-offset-color: var(--bg-primary);
+  }
+
+  /* Secondary Button - Outlined with glow */
+  .btn-secondary {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-200 relative overflow-hidden;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+  }
+
+  .btn-secondary:hover {
+    transform: scale(1.02);
+    background: var(--accent-muted);
+    box-shadow: 0 0 20px var(--accent-muted);
+  }
+
+  .btn-secondary:focus-visible {
+    @apply outline-none ring-2 ring-offset-2;
+    ring-color: var(--accent);
+    ring-offset-color: var(--bg-primary);
+  }
+
+  /* Ghost Button - Minimal */
+  .btn-ghost {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-200 relative overflow-hidden;
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-body);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-muted);
+  }
+
+  .btn-ghost:focus-visible {
+    @apply outline-none ring-2 ring-offset-2;
+    ring-color: var(--accent);
+    ring-offset-color: var(--bg-primary);
+  }
+
+  /* Animated outline for buttons - rotating gradient border */
+  .btn-primary::after,
+  .btn-secondary::after,
+  .btn-ghost::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(
+      from var(--border-angle, 0deg),
+      var(--accent) 0%,
+      transparent 15%,
+      transparent 85%,
+      var(--accent) 100%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .btn-primary:hover::after,
+  .btn-primary:focus-visible::after,
+  .btn-secondary:hover::after,
+  .btn-secondary:focus-visible::after,
+  .btn-ghost:hover::after,
+  .btn-ghost:focus-visible::after {
+    opacity: 1;
+    animation: rotateBorder 3s linear infinite;
+  }
+
+  /* Nav link - underline animation */
+  .nav-link {
+    @apply relative py-2 text-text-muted transition-colors duration-200;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-[1px] transition-all duration-200;
+    background: var(--accent);
+  }
+
+  .nav-link:hover {
+    color: var(--accent);
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .nav-link:focus-visible {
+    @apply outline-none;
+    color: var(--accent);
+  }
+
+  /* Tech tag - monospace */
+  .tech-tag {
+    @apply px-3 py-1 rounded text-sm font-mono;
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+    border: 1px solid var(--border-subtle);
+  }
+
+  /* Card - minimal */
+  .card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+  }
+
+  /* Section title */
+  .section-title {
+    @apply text-2xl font-bold mb-8;
+    color: var(--text-heading);
+  }
+
+  /* Highlight card */
+  .highlight-card {
+    @apply p-6 rounded-lg;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+  }
+
+  /* Link with arrow */
+  .link-arrow {
+    @apply inline-flex items-center gap-2 text-accent transition-all duration-200;
+  }
+
+  .link-arrow:hover {
+    gap: 8px;
+  }
+
+  /* Social link */
+  .social-link {
+    @apply text-text-muted transition-colors duration-200;
+  }
+
+  .social-link:hover {
+    color: var(--accent);
+  }
+}
+
+/* ============================================================================
+   Animations (Framer Motion compatible)
+   ============================================================================ */
+
+/* Fade in on mount */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide up on scroll */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered fade */
+@keyframes staggeredFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Rotating border animation for buttons */
+@keyframes rotateBorder {
+  from {
+    --border-angle: 0deg;
+  }
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  .animate-staggered {
+    animation: staggeredFade 0.4s ease-out forwards;
+  }
+
+  /* Animation delays for staggered effects */
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  /* Initial states for JS animations */
+  .opacity-0-initial {
+    opacity: 0;
+  }
+
+  .translate-y-4-initial {
+    transform: translateY(1rem);
+  }
+}
+
+/* ============================================================================
+   Reduced Motion
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Hide particle background and custom cursor for reduced motion */
+  .particle-background,
+  .cursor-outer,
+  .cursor-inner {
+    display: none !important;
+  }
+}
+
+/* ============================================================================
+   Glass Card
+   ============================================================================ */
+
+.glass-card {
+  background: rgba(17, 17, 17, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 0 30px var(--accent-muted);
+}
+
+/* Light mode glass card */
+.light .glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.light .glass-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 0 30px var(--accent-muted);
+}
+
+/* ============================================================================
+   Animated Underline
+   ============================================================================ */
+
+.animated-underline {
+  position: relative;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* ============================================================================
+   Hover Lift
+   ============================================================================ */
+
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================================
+   Glow Effect
+   ============================================================================ */
+
+.glow-accent {
+  box-shadow: 0 0 20px var(--border-accent);
+}
+
+.glow-accent:hover {
+  box-shadow: 0 0 30px var(--accent-glow);
+}
+
+/* ============================================================================
+   Text Gradient
+   ============================================================================ */
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-glow) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================================
+   Shimmer Animation
+   ============================================================================ */
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ============================================================================
+   Pulse Glow
+   ============================================================================ */
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px var(--accent-muted);
+  }
+
+  50% {
+    box-shadow: 0 0 40px var(--border-accent);
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* ============================================================================
+   Float Animation
+   ============================================================================ */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ============================================================================
+   Spin Slow
+   ============================================================================ */
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+/* ============================================================================
+   Focus States
+   ============================================================================ */
+
+:focus-visible {
+  @apply outline-none ring-2;
+  ring-color: var(--accent);
+  ring-offset: 2px;
+  ring-offset-color: var(--bg-primary);
+}
+
+/* ============================================================================
+   Responsive Utilities
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+}
+
+/* ============================================================================
+   Print Styles for Resume
+   ============================================================================ */
+
+@media print {
+  @page {
+    margin: 0.5in;
+    size: letter;
+  }
+
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+}
+
+/* ============================================================================
+   Additional Utility Classes
+   ============================================================================ */
+
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+}
