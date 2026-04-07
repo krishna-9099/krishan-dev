@@ -20,7 +20,9 @@ const router = createBrowserRouter([
     path: '*',
     element: <NotFoundPage />,
   },
-]);
+], {
+  basename: '/krishan-dev/'
+});
 
 /**
  * App component - Root component with React Router setup
