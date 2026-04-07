@@ -2,18 +2,32 @@
 
 A modern, responsive portfolio website built with React + Vite, featuring smooth animations, dark/light theme support, and an accessible design.
 
+## Live Website
+
+- https://krishna-9099.github.io/krishan-dev/
+
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Available Scripts](#available-scripts)
-- [Features](#features)
-- [Pages](#pages)
-- [Components Overview](#components-overview)
-- [Configuration Files](#configuration-files)
-- [Browser Support](#browser-support)
+- [Portfolio](#portfolio)
+  - [Live Website](#live-website)
+  - [📋 Table of Contents](#-table-of-contents)
+  - [Overview](#overview)
+  - [Tech Stack](#tech-stack)
+  - [Project Structure](#project-structure)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Production Build](#production-build)
+  - [Available Scripts](#available-scripts)
+  - [Features](#features)
+  - [Pages](#pages)
+  - [Components Overview](#components-overview)
+    - [Layout Components](#layout-components)
+    - [Page Sections](#page-sections)
+    - [UI Components](#ui-components)
+    - [Animation Components](#animation-components)
+  - [Configuration Files](#configuration-files)
+  - [Browser Support](#browser-support)
 
 ## Overview
 
