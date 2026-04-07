@@ -106,7 +106,7 @@ export default function FeaturedProject() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Phone Mockup Area */}
             <motion.div
-              className="relative h-[400px] md:h-[500px] w-full flex items-center justify-center lg:justify-start"
+              className="relative min-h-[550px] md:min-h-[600px] lg:min-h-[500px] lg:h-[500px] w-full flex items-center justify-center lg:justify-start"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}

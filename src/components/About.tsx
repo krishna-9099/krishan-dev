@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Smartphone, Music, Rocket, Download, ExternalLink } from "lucide-react";
+import { Smartphone, Music, Rocket, ExternalLink } from "lucide-react";
 
 interface Highlight {
   icon: React.ReactNode;
@@ -93,7 +93,7 @@ export default function About() {
           >
             {/* Subtle gradient hover effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            
+
             <div className="relative z-10 space-y-6">
               <motion.div variants={itemVariants} className="flex items-center gap-6 mb-2">
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-accent p-1 shrink-0">
@@ -132,15 +132,6 @@ export default function About() {
                 variants={itemVariants}
               >
                 <motion.a
-                  href="/resume"
-                  className="btn-primary flex items-center gap-2"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Download className="w-4 h-4" />
-                  Download Resume
-                </motion.a>
-                <motion.a
                   href="#contact"
                   className="btn-secondary flex items-center gap-2"
                   whileHover={{ scale: 1.02 }}
@@ -164,9 +155,8 @@ export default function About() {
             {highlights.map((highlight, index) => (
               <motion.div
                 key={highlight.label}
-                className={`glass-card p-6 md:p-8 flex flex-col items-center justify-center text-center group ${
-                  index === 2 ? "col-span-2" : "col-span-1"
-                }`}
+                className={`glass-card p-6 md:p-8 flex flex-col items-center justify-center text-center group ${index === 2 ? "col-span-2" : "col-span-1"
+                  }`}
                 whileHover={{ scale: 1.02, y: -5 }}
                 transition={{ duration: 0.3 }}
                 variants={itemVariants}

@@ -72,8 +72,8 @@ export default function Navbar() {
         <a
           href="#"
           className={`font-bold transition-all duration-300 ${isScrolled
-              ? "text-xl text-white drop-shadow-lg"
-              : "text-xl text-text-heading hover:text-accent"
+            ? "text-xl text-white drop-shadow-lg"
+            : "text-xl text-text-heading hover:text-accent"
             }`}
           aria-label="Krishna - Home"
         >
@@ -94,8 +94,8 @@ export default function Navbar() {
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
               className={`relative transition-all duration-300 ${isScrolled
-                  ? "text-white font-medium drop-shadow-md hover:text-white/90"
-                  : "nav-link"
+                ? "text-white font-medium drop-shadow-md hover:text-white/90"
+                : "nav-link"
                 }`}
             >
               {link.label}
@@ -104,22 +104,13 @@ export default function Navbar() {
               )}
             </a>
           ))}
-          <a
-            href="/resume"
-            className={`transition-all duration-300 ${isScrolled
-                ? "px-4 py-2 rounded-full text-sm font-semibold bg-white text-black hover:bg-white/90 shadow-lg"
-                : "btn-secondary text-sm py-2 px-4"
-              }`}
-          >
-            Resume
-          </a>
         </div>
 
         {/* Mobile Menu Button */}
         <button
           className={`md:hidden p-2 transition-colors duration-200 ${isScrolled
-              ? "text-white drop-shadow-md hover:text-white/90"
-              : "text-text-muted hover:text-accent"
+            ? "text-white drop-shadow-md hover:text-white/90"
+            : "text-text-muted hover:text-accent"
             }`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-expanded={isMobileMenuOpen}
@@ -138,8 +129,8 @@ export default function Navbar() {
       <div
         id="mobile-menu"
         className={`md:hidden absolute top-full left-0 right-0 transition-all duration-300 ${isMobileMenuOpen
-            ? "opacity-100 visible translate-y-0"
-            : "opacity-0 invisible -translate-y-4 pointer-events-none"
+          ? "opacity-100 visible translate-y-0"
+          : "opacity-0 invisible -translate-y-4 pointer-events-none"
           }`}
         style={{
           background: isScrolled
@@ -159,24 +150,14 @@ export default function Navbar() {
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
               className={`transition-colors duration-200 py-2 ${isScrolled
-                  ? "text-white font-medium drop-shadow-md hover:text-white/80"
-                  : "text-white/80 hover:text-accent"
+                ? "text-white font-medium drop-shadow-md hover:text-white/80"
+                : "text-white/80 hover:text-accent"
                 }`}
               tabIndex={isMobileMenuOpen ? 0 : -1}
             >
               {link.label}
             </a>
           ))}
-          <a
-            href="/resume"
-            className={`px-4 py-2 rounded-full text-sm font-semibold text-center transition-all duration-200 ${isScrolled
-                ? "bg-white text-black hover:bg-white/90 shadow-lg"
-                : "bg-accent text-black hover:bg-accent/90"
-              }`}
-            tabIndex={isMobileMenuOpen ? 0 : -1}
-          >
-            Resume
-          </a>
         </div>
       </div>
     </nav>

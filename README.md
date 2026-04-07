@@ -27,16 +27,16 @@ This portfolio website showcases professional work and skills with a focus on mo
 
 ## Tech Stack
 
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| React | 18 | UI framework |
-| Vite | 5 | Build tool & dev server |
-| TypeScript | - | Type safety |
-| Tailwind CSS | - | Utility-first styling |
-| React Router DOM | - | Client-side routing |
-| Framer Motion | - | Declarative animations |
-| GSAP | - | Advanced animations |
-| Three.js / React Three Fiber | - | 3D graphics |
+| Technology                   | Version | Purpose                 |
+| ---------------------------- | ------- | ----------------------- |
+| React                        | 18      | UI framework            |
+| Vite                         | 5       | Build tool & dev server |
+| TypeScript                   | -       | Type safety             |
+| Tailwind CSS                 | -       | Utility-first styling   |
+| React Router DOM             | -       | Client-side routing     |
+| Framer Motion                | -       | Declarative animations  |
+| GSAP                         | -       | Advanced animations     |
+| Three.js / React Three Fiber | -       | 3D graphics             |
 
 ## Project Structure
 
@@ -97,12 +97,12 @@ npm run preview
 
 ## Available Scripts
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start development server at http://localhost:3000 |
-| `npm run build` | Build optimized production bundle |
-| `npm run preview` | Preview production build locally |
-| `npm run lint` | Run ESLint for code quality checks |
+| Script            | Description                                       |
+| ----------------- | ------------------------------------------------- |
+| `npm run dev`     | Start development server at http://localhost:3000 |
+| `npm run build`   | Build optimized production bundle                 |
+| `npm run preview` | Preview production build locally                  |
+| `npm run lint`    | Run ESLint for code quality checks                |
 
 ## Features
 
@@ -115,11 +115,10 @@ npm run preview
 
 ## Pages
 
-| Route | Description |
-|-------|-------------|
-| `/` | Home page featuring all main sections (Hero, About, Projects, Skills, Contact) |
-| `/resume` | Resume/CV page with downloadable format |
-| `*` | 404 Not Found page for undefined routes |
+| Route | Description                                                                    |
+| ----- | ------------------------------------------------------------------------------ |
+| `/`   | Home page featuring all main sections (Hero, About, Projects, Skills, Contact) |
+| `*`   | 404 Not Found page for undefined routes                                        |
 
 ## Components Overview
 
@@ -150,22 +149,22 @@ npm run preview
 
 ## Configuration Files
 
-| File | Purpose |
-|------|---------|
-| `vite.config.ts` | Vite build configuration |
-| `tsconfig.json` | TypeScript compiler options |
-| `tailwind.config.js` | Tailwind CSS customization |
-| `postcss.config.js` | PostCSS plugins configuration |
-| `.eslintrc.json` | ESLint rules and settings |
+| File                 | Purpose                       |
+| -------------------- | ----------------------------- |
+| `vite.config.ts`     | Vite build configuration      |
+| `tsconfig.json`      | TypeScript compiler options   |
+| `tailwind.config.js` | Tailwind CSS customization    |
+| `postcss.config.js`  | PostCSS plugins configuration |
+| `.eslintrc.json`     | ESLint rules and settings     |
 
 ## Browser Support
 
 | Browser | Version |
-|---------|---------|
-| Chrome | Latest |
-| Firefox | Latest |
-| Safari | Latest |
-| Edge | Latest |
+| ------- | ------- |
+| Chrome  | Latest  |
+| Firefox | Latest  |
+| Safari  | Latest  |
+| Edge    | Latest  |
 
 ---
 

@@ -68,12 +68,6 @@ export default function Navigation() {
               {link.label}
             </a>
           ))}
-          <a
-            href="/resume"
-            className="btn-secondary text-sm"
-          >
-            Resume
-          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -116,13 +110,6 @@ export default function Navigation() {
               {link.label}
             </a>
           ))}
-          <a
-            href="/resume"
-            className="btn-primary text-lg mt-4"
-            tabIndex={isMobileMenuOpen ? 0 : -1}
-          >
-            Resume
-          </a>
         </div>
       </div>
     </nav>

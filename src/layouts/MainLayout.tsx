@@ -25,7 +25,7 @@ export const SITE_METADATA = {
     'Cross-platform Apps',
     'Firebase',
     'Open Source',
-    'JioSaavn',
+    'Saavn Play',
     'Flutter Expert',
     'India',
   ],
@@ -115,23 +115,23 @@ export const JSON_LD = {
 
 const ParticleBackground = lazy(
   () =>
-  import('../components/animations/ParticleBackground').then((mod) => ({
-    default: mod.default,
-  })).catch(() => ({ default: () => <></> }))
+    import('../components/animations/ParticleBackground').then((mod) => ({
+      default: mod.default,
+    })).catch(() => ({ default: () => <></> }))
 );
 
 const MagneticCursor = lazy(
   () =>
-  import('../components/animations/MagneticCursor').then((mod) => ({
-    default: mod.default,
-  })).catch(() => ({ default: () => <></> }))
+    import('../components/animations/MagneticCursor').then((mod) => ({
+      default: mod.default,
+    })).catch(() => ({ default: () => <></> }))
 );
 
 const ScrollProgress = lazy(
   () =>
-  import('../components/ScrollProgress').then((mod) => ({
-    default: mod.default,
-  })).catch(() => ({ default: () => <></> }))
+    import('../components/ScrollProgress').then((mod) => ({
+      default: mod.default,
+    })).catch(() => ({ default: () => <></> }))
 );
 
 // ============================================================================

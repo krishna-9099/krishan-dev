@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ExternalLink, Cloud, Building, Image as ImageIcon, Music, Smartphone, Database, Server, Globe, Code } from "lucide-react";
+import { ExternalLink, Cloud, Building, Music, Smartphone, Database, Server, Globe, Code } from "lucide-react";
 import React, { useRef } from "react";
 
 interface TimelineProject {
@@ -22,25 +22,45 @@ interface TimelineProject {
 const timelineProjects: TimelineProject[] = [
   {
     id: 1,
-    title: "Weather App",
-    category: "WEATHER FORECASTING",
+    title: "KrishnaTune Alexa Skill",
+    category: "VOICE MUSIC STREAMING",
     description:
-      "A sleek and intuitive weather application that provides real-time weather data, forecasts, and location-based weather updates. Features beautiful weather animations and a clean, minimal interface.",
-    techStack: ["Flutter", "Dart", "OpenWeather", "Geolocation"],
+      "A production-grade Alexa skill for streaming JioSaavn music with intelligent AutoMix, robust queue handling, and rich voice-based discovery across charts, moods, and trending content.",
+    techStack: ["Node.js", "Alexa Skills Kit", "AWS Lambda", "JioSaavn SDK"],
     features: [
-      "Real-time weather updates",
-      "7-day weather forecast",
-      "Location-based weather detection",
-      "Beautiful weather animations",
+      "Intelligent AutoMix for long listening sessions",
+      "Voice controls for play, pause, seek, and queue",
+      "Multi-language playback with chart, mood, and trending intents",
+      "Session-aware playback state and resilient error handling",
     ],
-    githubUrl: "https://github.com/krishan/weather-app",
-    icon: <Cloud className="w-6 h-6" />,
-    gradient: "from-blue-500 to-cyan-400",
-    year: "2023",
+    githubUrl: "https://github.com/krishna-9099/krishna-tune",
+    icon: <Server className="w-6 h-6" />,
+    gradient: "from-cyan-500 to-blue-400",
+    year: "2026",
     deviceType: "mobile",
   },
   {
     id: 2,
+    title: "Saavn Play",
+    category: "OPEN SOURCE LIBRARY",
+    description:
+      "A powerful Dart/Flutter package available on pub.dev that provides seamless integration with Saavn Play APIs for music data and playback workflows. Enables developers to build music applications with access to rich catalog metadata.",
+    techStack: ["Dart", "Flutter", "REST API", "pub.dev"],
+    features: [
+      "Song search & streaming",
+      "Playlist management",
+      "Lyrics support",
+      "Artist & album discovery",
+    ],
+    pubDevUrl: "https://pub.dev/packages/saavn_play",
+    githubUrl: "https://github.com/krishna-9099/saavn_play",
+    icon: <Music className="w-6 h-6" />,
+    gradient: "from-green-500 to-emerald-400",
+    year: "2024",
+    deviceType: "mobile",
+  },
+  {
+    id: 3,
     title: "Hostel Management System",
     category: "ENTERPRISE SOLUTION",
     description:
@@ -59,43 +79,22 @@ const timelineProjects: TimelineProject[] = [
     deviceType: "mobile",
   },
   {
-    id: 3,
-    title: "ScapWall",
-    category: "WALLPAPER APPLICATION",
-    description:
-      "A modern wallpaper application that curates stunning high-quality wallpapers from various sources. Features smart categorization, favorites system, and automatic wallpaper changer functionality.",
-    techStack: ["Flutter", "REST API", "Hive", "Wallpaper Engine"],
-    features: [
-      "Curated wallpaper collections",
-      "Smart category filtering",
-      "Auto wallpaper changer",
-      "Offline favorites support",
-    ],
-    githubUrl: "https://github.com/krishan/scapwall",
-    liveUrl: "https://scapwall.app",
-    icon: <ImageIcon className="w-6 h-6" />,
-    gradient: "from-orange-500 to-amber-400",
-    year: "2024",
-    deviceType: "mobile",
-  },
-  {
     id: 4,
-    title: "JioSaavn Package",
-    category: "OPEN SOURCE LIBRARY",
+    title: "Weather App",
+    category: "WEATHER FORECASTING",
     description:
-      "A powerful Dart/Flutter package available on pub.dev that provides seamless integration with JioSaavn's music streaming services. Enables developers to build music applications with access to millions of songs.",
-    techStack: ["Dart", "Flutter", "REST API", "pub.dev"],
+      "A sleek and intuitive weather application that provides real-time weather data, forecasts, and location-based weather updates. Features beautiful weather animations and a clean, minimal interface.",
+    techStack: ["Flutter", "Dart", "OpenWeather", "Geolocation"],
     features: [
-      "Song search & streaming",
-      "Playlist management",
-      "Lyrics support",
-      "Artist & album discovery",
+      "Real-time weather updates",
+      "7-day weather forecast",
+      "Location-based weather detection",
+      "Beautiful weather animations",
     ],
-    pubDevUrl: "https://pub.dev/packages/jiosaavn",
-    githubUrl: "https://github.com/krishan/jiosaavn",
-    icon: <Music className="w-6 h-6" />,
-    gradient: "from-green-500 to-emerald-400",
-    year: "2024",
+    githubUrl: "https://github.com/krishan/weather-app",
+    icon: <Cloud className="w-6 h-6" />,
+    gradient: "from-blue-500 to-cyan-400",
+    year: "2023",
     deviceType: "mobile",
   },
 ];
@@ -205,14 +204,14 @@ function DeviceMockup({ project, isEven }: { project: TimelineProject, isEven: b
     target: ref,
     offset: ["start end", "end start"]
   });
-  
+
   const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  
+
   // Angle towards the text side
   const rotateY = isEven ? 15 : -15;
 
   return (
-    <motion.div 
+    <motion.div
       ref={ref}
       style={{ y, perspective: "1500px" }}
       className="relative w-full max-w-[340px] md:max-w-[420px] mx-auto z-10 flex items-center justify-center p-4 md:p-8"
@@ -251,42 +250,42 @@ function DeviceMockup({ project, isEven }: { project: TimelineProject, isEven: b
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
         style={{ transformStyle: "preserve-3d" }}
       >
-        
+
         {/* Soft edge highlight for backplate */}
         <div className="absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
         {/* The Phone Overlaying the Backplate */}
-        <div 
+        <div
           className="absolute w-[82%] aspect-[9/19.5] rounded-[2.5rem] border-[6px] border-[#222225] bg-black shadow-[30px_30px_50px_rgba(0,0,0,0.7)] overflow-hidden group-hover:-translate-y-2 group-hover:shadow-[40px_40px_60px_rgba(0,0,0,0.8)] transition-all duration-700 ease-out will-change-transform"
           style={{ transform: "translateZ(40px)" }} // Pop out in 3D
         >
           {/* Notch */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 md:w-28 h-5 md:h-6 bg-[#222225] rounded-b-2xl z-20 flex justify-center items-center gap-1.5 shadow-sm">
-             <div className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-[#0a0a0a] shadow-inner" />
-             <div className="w-[3px] md:w-1 h-[3px] md:h-1 rounded-full bg-blue-900/50 shadow-[0_0_4px_rgba(59,130,246,0.5)]" />
+            <div className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-[#0a0a0a] shadow-inner" />
+            <div className="w-[3px] md:w-1 h-[3px] md:h-1 rounded-full bg-blue-900/50 shadow-[0_0_4px_rgba(59,130,246,0.5)]" />
           </div>
 
           {/* Screen Display */}
           <div className="absolute inset-0 bg-[#0a0a0c] w-full h-full z-10 overflow-hidden group-hover:scale-105 transition-transform duration-1000">
             {project.imageSrc ? (
-               // eslint-disable-next-line @next/next/no-img-element
+              // eslint-disable-next-line @next/next/no-img-element
               <img src={project.imageSrc} alt={`${project.title} screenshot`} className="w-full h-full object-cover" />
             ) : (
               <div className="w-full h-full relative flex flex-col items-center justify-center p-6 text-center">
-                 {/* Internal gradient app mockup logic */}
-                 <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-30`} />
-                 <div className="absolute top-0 w-full h-1/2 bg-gradient-to-b from-black/80 to-transparent" />
-                 <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black/90 to-transparent" />
-                 
-                 <motion.div 
-                   className="relative p-4 md:p-5 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl mb-6 shadow-2xl"
-                   animate={{ y: [0, -6, 0] }}
-                   transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
-                 >
-                   {React.cloneElement(project.icon as React.ReactElement, { className: "w-8 h-8 md:w-10 md:h-10 text-white shadow-sm" })}
-                 </motion.div>
-                 <h4 className="relative text-white font-bold text-lg md:text-xl mb-1 shadow-black drop-shadow-lg leading-tight">{project.title}</h4>
-                 <p className="relative text-white/50 text-[10px] md:text-xs mt-2 tracking-[0.2em] uppercase font-bold">In Development</p>
+                {/* Internal gradient app mockup logic */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-30`} />
+                <div className="absolute top-0 w-full h-1/2 bg-gradient-to-b from-black/80 to-transparent" />
+                <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black/90 to-transparent" />
+
+                <motion.div
+                  className="relative p-4 md:p-5 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl mb-6 shadow-2xl"
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
+                >
+                  {React.cloneElement(project.icon as React.ReactElement, { className: "w-8 h-8 md:w-10 md:h-10 text-white shadow-sm" })}
+                </motion.div>
+                <h4 className="relative text-white font-bold text-lg md:text-xl mb-1 shadow-black drop-shadow-lg leading-tight">{project.title}</h4>
+                <p className="relative text-white/50 text-[10px] md:text-xs mt-2 tracking-[0.2em] uppercase font-bold">In Development</p>
               </div>
             )}
           </div>
@@ -304,9 +303,8 @@ function TimelineItem({ project, index }: TimelineItemProps) {
 
   return (
     <motion.div
-      className={`relative flex flex-col md:flex-row items-center gap-10 lg:gap-20 ${
-        isEven ? "" : "md:flex-row-reverse"
-      }`}
+      className={`relative flex flex-col md:flex-row items-center gap-10 lg:gap-20 ${isEven ? "" : "md:flex-row-reverse"
+        }`}
       variants={itemVariants}
     >
       {/* 3D Mockup Column */}
@@ -323,7 +321,7 @@ function TimelineItem({ project, index }: TimelineItemProps) {
         >
           {/* Subtle Year Background */}
           <div className={`absolute -top-16 md:-top-24 ${isEven ? "-left-8 md:-left-16" : "-right-8 md:-right-16"} text-8xl md:text-[160px] font-black text-white/[0.02] tracking-tighter select-none pointer-events-none z-0`}>
-             {project.year}
+            {project.year}
           </div>
 
           <div className="relative z-10">
@@ -340,8 +338,8 @@ function TimelineItem({ project, index }: TimelineItemProps) {
             {/* Premium Pill Tech Stack */}
             <div className="flex flex-wrap gap-2.5 mb-8 md:mb-10">
               {project.techStack.map((tech) => (
-                <div 
-                  key={tech} 
+                <div
+                  key={tech}
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_4px_14px_rgba(0,0,0,0.1)] hover:bg-white/10 transition-colors"
                 >
                   {getTechIcon(tech)}
